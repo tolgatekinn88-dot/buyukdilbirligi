@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Büyük Dil Birliği | Ortak Türk Alfabesi</title>
+<style>
+:root{--bg:#f5f3ee;--card:#fff;--ink:#17211b;--muted:#64706a;--accent:#0b6b57;--accent2:#e2f1eb;--line:#dfe5e1;--gold:#b58a3b;--shadow:0 14px 40px rgba(23,33,27,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#edf6f2 0,#f8f6f1 42%,#f1efe9 100%);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+.wrap{max-width:1140px;margin:auto;padding:18px 18px 55px}
+header{display:flex;align-items:center;gap:16px;padding:12px 6px 20px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.logo{width:62px;height:62px;border-radius:18px;display:block;object-fit:cover;box-shadow:0 8px 22px rgba(11,107,87,.18);background:#fff}.brand b{font-size:14px;letter-spacing:.12em}.brand span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-80px;top:-100px;width:280px;height:280px;border-radius:50%;background:var(--accent2);opacity:.7}
+.kicker{position:relative;z-index:1;font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}h1{position:relative;z-index:1;font-size:clamp(32px,5.2vw,58px);line-height:.98;margin:9px 0 14px;letter-spacing:-.045em}.lead{position:relative;z-index:1;max-width:800px;color:var(--muted);font-size:17px;line-height:1.65}.heroActions{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.btn{border:0;border-radius:13px;padding:11px 15px;font-weight:850;cursor:pointer;text-decoration:none;display:inline-block}.primary{background:var(--accent);color:#fff}.secondary{background:#eef1ef;color:var(--ink)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;position:relative;z-index:1}.badge{background:var(--accent2);color:var(--accent);padding:8px 12px;border-radius:999px;font-weight:800;font-size:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:23px;box-shadow:0 8px 25px rgba(23,33,27,.05)}h2{font-size:21px;margin:0 0 15px}h3{font-size:15px;margin:18px 0 8px}.small{font-size:12px;line-height:1.6;color:var(--muted)}.muted{color:var(--muted)}
+.tabs{display:flex;gap:8px;margin-bottom:12px}.tab{border:1px solid var(--line);background:#fafafa;border-radius:12px;padding:9px 13px;font-weight:850;cursor:pointer}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:16px;padding:15px;font:16px/1.55 inherit;resize:vertical;outline:none}.out{min-height:205px;background:#f8fbf9;border:1px solid var(--line);border-radius:16px;padding:15px;font-size:17px;line-height:1.65;white-space:pre-wrap}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit}.drop{border:1px dashed #b9c9c1;border-radius:14px;padding:12px;margin-top:10px;background:#fbfcfb}.warn{background:#fff8e9;border:1px solid #efdda9;border-radius:15px;padding:13px;line-height:1.55;margin-top:13px}.ok{background:#eef8f4;border:1px solid #cfe8de;border-radius:15px;padding:13px;line-height:1.55;margin-top:13px}
+.full{margin-top:18px}.alphabet{display:grid;grid-template-columns:repeat(17,1fr);gap:7px}@media(max-width:900px){.alphabet{grid-template-columns:repeat(9,1fr)}}@media(max-width:500px){.alphabet{grid-template-columns:repeat(6,1fr)}}.letter{border:1px solid var(--line);background:#f5f7f6;border-radius:11px;padding:10px 5px;text-align:center;font-weight:900;font-size:17px;cursor:pointer}.letter.special{background:#e5f3ee;color:var(--accent)}
+.tableWrap{overflow:auto}.mapTable{width:100%;border-collapse:collapse;font-size:14px}.mapTable th,.mapTable td{border-bottom:1px solid var(--line);padding:11px 9px;text-align:left;vertical-align:top}.mapTable th{background:#f6f8f7}.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:800px){.examples{grid-template-columns:1fr}}.example{border:1px solid var(--line);border-radius:15px;padding:13px;background:#fbfbfa;line-height:1.5}.example b{display:block;margin-bottom:5px}.step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}.num{width:42px;height:42px;border-radius:13px;background:var(--accent2);color:var(--accent);display:grid;place-items:center;font-weight:950}
+footer{margin-top:20px;color:var(--muted);font-size:12px;line-height:1.65}
+.logo-wrap{display:flex;align-items:center;gap:13px;margin-bottom:18px}.logo-mark{width:54px;height:54px;border-radius:16px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:900;font-size:22px;box-shadow:0 7px 18px rgba(13,107,85,.2)}.logo-name{font-weight:900;letter-spacing:-.02em;font-size:20px}.logo-sub{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">
+    <!-- Logo: replace src with the exact logo file already used on the live GitHub site if desired. -->
+    <img class="logo logo-image" src="logo-mark.png" alt="Büyük Dil Birliği logosu">
+    <div><b>BÜYÜK DİL BİRLİĞİ</b><span>Ortak Türk Alfabesi Projesi</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">Dilde · Fikirde · İşte Birlik</div>
+  <h1>Ortak Türk Alfabesi</h1>
+  <p class="lead">Kazakça ve Kırgızca Kiril metinleri, 2024'te üzerinde uzlaşılan 34 harfli Ortak Türk Alfabesi çerçevesi ve 2026'da kabul edilen Kazakça–Kırgızca alfabe önerileri doğrultusunda inceleyen eğitim projesi.</p>
+  <div class="heroActions"><a class="btn primary" href="#donustur">Metni Dönüştür</a><a class="btn secondary" href="#alfabe">34 Harfi Gör</a></div>
+  <div class="badges"><span class="badge">34 harfli ortak çerçeve</span><span class="badge">Kazakça</span><span class="badge">Kırgızca</span><span class="badge">Ses–harf ilişkisi</span><span class="badge">Eğitim amaçlı</span></div>
+</section>
+
+<section class="card full">
+<h2>Nasıl çalışıyor?</h2>
+<div class="grid" style="margin-top:0">
+  <div class="step"><div class="num">01</div><div><b>Dili seç</b><div class="small">Kazakça veya Kırgızca seçilir.</div></div></div>
+  <div class="step"><div class="num">02</div><div><b>Metni ekle</b><div class="small">Metin yazılır, örnek yüklenir veya .txt dosyası seçilir.</div></div></div>
+  <div class="step"><div class="num">03</div><div><b>Dönüştür</b><div class="small">Kiril harfleri, seçilen dil için tanımlanan Latin tabanlı karşılıklarla işlenir.</div></div></div>
+  <div class="step"><div class="num">04</div><div><b>Kontrol et</b><div class="small">Özellikle çok sesli/bağlama bağlı Kiril harfleri için insan kontrolü yapılır.</div></div></div>
+</div>
+</section>
+
+<section class="grid" id="donustur">
+<section class="card">
+<h2>Alfabe Dönüştürücü</h2>
+<label class="small">Metnin dili</label>
+<select class="select" id="lang">
+<option value="kaz">Kazakça</option><option value="kir">Kırgızca</option>
+</select>
+<textarea id="input" style="margin-top:10px" placeholder="Kiril alfabesiyle metninizi yazın…">Қазақстан — ортақ түркі әлемінің бір бөлігі.</textarea>
+<div class="actions"><button class="btn secondary" onclick="exampleText()">Örnek Metin</button><label class="btn secondary" for="file">.txt Dosyası Yükle</label><input id="file" type="file" accept=".txt,text/plain" hidden></div>
+<div class="actions"><button class="btn primary" onclick="convert()">Metni Dönüştür</button><button class="btn secondary" onclick="clearAll()">Temizle</button></div>
+<div class="small" id="status">Eğitim amaçlı transliterasyon prototipi.</div>
+</section>
+
+<section class="card">
+<h2>Dönüştürülmüş metin</h2>
+<div class="out" id="output">Sonuç burada görünecek.</div>
+<div class="actions"><button class="btn secondary" onclick="copyOut()">Çıktıyı Kopyala</button></div>
+<div class="warn"><b>İnsan kontrolü:</b> Kazakçadaki özellikle <b>И, У, Е, Ю, Я</b> gibi çoklu/bağlama bağlı değer taşıyabilen Kiril işaretleri için sonuç otomatik kesinlik iddiası taşımaz. Özel adlar ve alıntı kelimeler de kontrol edilmelidir.</div>
+</section>
+</section>
+
+<section class="card full">
+<h2>Temel harf eşleştirmeleri</h2>
+<div class="tableWrap">
+<table class="mapTable">
+<thead><tr><th>Dil</th><th>Kiril</th><th>Ortak Latin karşılığı</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td><b>Kazakça</b></td><td>ә ғ қ ң ө</td><td>Ä Ğ Q Ñ Ö</td><td>2026'da kabul edilen Kazakça önerisindeki karşılıklar.</td></tr>
+<tr><td><b>Kazakça</b></td><td>ұ ү ы і й</td><td>Ū Ü I İ Y</td><td>Dönüştürme sırasında harf-ses karşılıklarının doğru sırada ve tutarlı biçimde uygulanması gerekir.</td></tr>
+<tr><td><b>Kazakça</b></td><td>ш ч ж</td><td>Ş Ç J</td><td>Temel karşılıklar.</td></tr>
+<tr><tr><td><b>Kırgızca</b></td><td>ң ө ү ы и й</td><td>Ñ Ö Ü I İ Y</td><td>Kırgızca için kabul edilen öneri çerçevesi.</td></tr>
+<tr><td><b>Kırgızca</b></td><td>ш ч ж</td><td>Ş Ç J</td><td>Temel karşılıklar.</td></tr>
+<tr><td><b>Kırgızca</b></td><td>х һ</td><td>H</td><td>Yazım/kelime kökenine göre kontrol gerekebilir.</td></tr>
+</tbody></table>
+</div>
+
+</section>
+
+<section class="card full" id="alfabe">
+<h2>Ortak Türk Alfabesi · 34 harf</h2>
+<p class="small">2024'te 34 harften oluşan Latin tabanlı Ortak Türk Alfabesi üzerinde uzlaşıldı. Komisyon açıklamasına göre harfler Türk dillerindeki farklı fonemleri temsil etmek üzere tasarlandı. 2026'da Kazakça ve Kırgızca için bu ortak çerçeveye dayalı alfabe önerileri ayrıca referans belge olarak kabul edildi.</p>
+<div class="alphabet" id="alphabet"></div>
+<div class="out" id="letterInfo" style="min-height:78px;margin-top:13px">Bir harfe tıklayın.</div>
+</section>
+
+<section class="card full">
+<h2>Harf ve Ses İlişkisi</h2>
+<p class="small">2008 tarihli Kıpçak söz varlığı çalışması, Tatarca, Başkurtça ve Karaçay-Balkarca örneklerinde ortaklığı yalnızca “aynı yazılan kelimeler” üzerinden değil; ses değişmeleri ve farklı biçimler üzerinden de ele alır. Bu nedenle sitedeki ses örneklerini doğrudan Kazakça/Kırgızca otomatik dönüşüm kuralı olarak değil, <b>dil ilişkisini açıklayan örnekler</b> olarak kullanıyoruz.</p>
+<div class="examples">
+<div class="example"><b>aç- → as-</b>Ses değişimine örnek</div>
+<div class="example"><b>ayt- → eyt-</b>Ses değişimine örnek</div>
+<div class="example"><b>bir- → ber-</b>Tek ses farklılığı</div>
+<div class="example"><b>kil- → kel-</b>Tek ses farklılığı</div>
+<div class="example"><b>boz- → buz-</b>Ses değişimi</div>
+<div class="example"><b>köter- → küter- → kötür-</b>Biçim/ses farklılığı</div>
+</div>
+<div class="note" style="background:#fff8e9;border:1px solid #efdda9;border-radius:15px;padding:13px;margin-top:13px;line-height:1.55"><b>Projede temel ilke:</b> “Bir harfi başka bir harfe çevirmek” ile “bir lehçedeki sesi başka bir lehçedeki sesle ilişkilendirmek” aynı işlem değildir. Dönüştürücüde ilkini, açıklama bölümünde ise ikincisini gösteriyoruz.</div>
+</section>
+
+<section class="card full">
+<h2>Projenin amacı</h2>
+<div class="examples">
+<div class="example"><b>Dil birliğini görünür kılmak</b>Farklı yazı sistemlerinin ardındaki ortaklıkları öğrencinin keşfedebileceği hâle getirmek.</div>
+<div class="example"><b>Dijital bir araç geliştirmek</b>Öğrencinin yalnızca bilgi okumak yerine metin üzerinde deney yapmasını sağlamak.</div>
+<div class="example"><b>Ses–harf farkındalığı oluşturmak</b>Lehçelerdeki farklılıkların her zaman “tamamen farklı dil” anlamına gelmediğini göstermek.</div>
+</div>
+</section>
+
+<footer>
+Bu site bir eğitim ve proje prototipidir. Ortak Türk Alfabesi 2024'te 34 harfli bir çerçeve olarak kabul edilmiş; 15 Haziran 2026'da Kazakça ve Kırgızca için bu çerçeveye dayalı alfabe önerileri Komisyon tarafından referans belge olarak kabul edilmiştir. Kazakça/Kırgızca dönüşümlerinde bağlama bağlı Kiril işaretleri için insan kontrolü önerilir.
+</footer>
+</div>
+
+<script>
+const alphabet=["A","B","C","Ç","D","E","Ə","F","G","Ğ","H","X","I","İ","J","K","Q","L","M","N","Ñ","O","Ö","P","R","S","Ş","T","U","Ū","Ü","V","Y","Z"];
+const special=new Set(["Ə","Ğ","X","I","İ","Q","Ñ","Ū","Ü"]);
+document.getElementById("alphabet").innerHTML=alphabet.map(x=>`<button class="letter ${special.has(x)?'special':''}" onclick="showLetter('${x}')">${x}</button>`).join("");
+const meanings={
+"Ə":"2024 ortak çerçevesindeki özel ünlü harflerinden biri; Kazakça 2026 önerisinde Ä biçimi kullanılmıştır.",
+"X":"Ortak çerçevede bulunan özel ünsüz harfi.",
+"I":"Noktasız ı sesini gösterir.",
+"İ":"Noktalı i sesini gösterir.",
+"Q":"Kazakça önerisinde Қ/қ ile ilişkilendirilen harf.",
+"Ñ":"Kazakça ve Kırgızcada Ң/ң ile ilişkilendirilen harf.",
+"Ū":"2024 ortak alfabesine Kazak heyetinin önerisiyle eklenen; Kazakça Ұ/ұ ile kullanılan harf.",
+"Ü":"Kazakça/Kırgızcada ön yuvarlak ünlüyü gösteren harf."
+};
+function showLetter(x){document.getElementById("letterInfo").innerHTML=`<b style="font-size:23px;color:var(--accent)">${x}</b> &nbsp; ${meanings[x]||"Ortak Türk Alfabesi içindeki temel harflerden biridir."}`}
+
+let lang="kaz";
+const maps={
+kaz:{
+"Ә":"Ä","ә":"ä","Ғ":"Ğ","ғ":"ğ","Қ":"Q","қ":"q","Ң":"Ñ","ң":"ñ","Ө":"Ö","ө":"ö",
+"Ұ":"Ū","ұ":"ū","Ү":"Ü","ү":"ü","Ы":"I","ы":"ı","І":"İ","і":"i","Й":"Y","й":"y",
+"Ш":"Ş","ш":"ş","Ч":"Ç","ч":"ç","Ж":"J","ж":"j","А":"A","а":"a","Б":"B","б":"b",
+"В":"V","в":"v","Г":"G","г":"g","Д":"D","д":"d","Е":"E","е":"e","З":"Z","з":"z",
+"К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","О":"O","о":"o",
+"П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u",
+"Ф":"F","ф":"f","Х":"X","х":"x","Һ":"H","һ":"h"
+},
+kir:{
+"Ң":"Ñ","ң":"ñ","Ө":"Ö","ө":"ö","Ү":"Ü","ү":"ü","Ы":"I","ы":"ı","И":"İ","и":"i","Й":"Y","й":"y",
+"Ш":"Ş","ш":"ş","Ч":"Ç","ч":"ç","Ж":"J","ж":"j","Х":"H","х":"h","Һ":"H","һ":"h",
+"А":"A","а":"a","Б":"B","б":"b","В":"V","в":"v","Г":"G","г":"G","Д":"D","д":"d","Е":"E","е":"e",
+"З":"Z","з":"z","К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","О":"O","о":"o",
+"П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u","Ф":"F","ф":"f"
+}};
+function transliterate(s){
+ const m=maps[lang]; let out="";
+ for(const ch of s){out+=Object.prototype.hasOwnProperty.call(m,ch)?m[ch]:ch;}
+ return out;
+}
+function convert(){
+ const src=document.getElementById("input").value;
+ document.getElementById("output").textContent=transliterate(src);
+ document.getElementById("status").textContent=(lang==="kaz"?"Kazakça":"Kırgızca")+" → Latin tabanlı ortak çerçeve";
+}
+function clearAll(){document.getElementById("input").value="";document.getElementById("output").textContent="";document.getElementById("status").textContent="";}
+function exampleText(){
+ document.getElementById("input").value=lang==="kaz"?"Қазақстан — ортақ түркі әлемінің бір бөлігі.":"Кыргыз тили — түрк тилдеринин бири.";
+ convert();
+}
+async function copyOut(){try{await navigator.clipboard.writeText(document.getElementById("output").textContent);document.getElementById("status").textContent="Çıktı panoya kopyalandı."}catch(e){}}
+document.getElementById("lang").addEventListener("change",e=>{lang=e.target.value;exampleText()});
+document.getElementById("file").addEventListener("change",async e=>{const f=e.target.files[0];if(f)document.getElementById("input").value=await f.text()});
+convert();
+</script>
+</body>
+</html>
