@@ -81,7 +81,7 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 
 <section class="card">
 <h2>Sonuç</h2>
-<div class="out" id="output">Sonuç burada görünecek.</div>
+<div class="out" id="output">Sonuç burada görünecek.</div><div id="status" aria-live="polite" style="display:none"></div>
 <div class="actions"><button class="btn secondary" onclick="copyOut()">Çıktıyı Kopyala</button></div>
 
 </section>
@@ -103,7 +103,7 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 </section>
 
 <section class="card full">
-<h2>Temel harf eşleştirmeleri</h2>
+<h2>Temel Harfler</h2>
 <div class="tableWrap">
 <table class="mapTable">
 <thead><tr><th>Dil</th><th>Kiril</th><th>Ortak Latin karşılığı</th><th>Not</th></tr></thead>
@@ -121,7 +121,42 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 <section class="card full" id="alfabe">
 <h2>Ortak Türk Alfabesi · 34 harf</h2>
 <p class="small">2024'te 34 harften oluşan Latin tabanlı Ortak Türk Alfabesi üzerinde uzlaşıldı. 2026'da Kazakça ve Kırgızca için bu ortak çerçeveye dayalı alfabe önerileri ayrıca referans belge olarak kabul edildi.</p>
-<div class="alphabet" id="alphabet"></div>
+<div class="alphabet" id="alphabet">
+<button class="letter " onclick="showLetter('A')">A</button>
+<button class="letter " onclick="showLetter('B')">B</button>
+<button class="letter " onclick="showLetter('C')">C</button>
+<button class="letter " onclick="showLetter('Ç')">Ç</button>
+<button class="letter " onclick="showLetter('D')">D</button>
+<button class="letter " onclick="showLetter('E')">E</button>
+<button class="letter special" onclick="showLetter('Ä')">Ä</button>
+<button class="letter " onclick="showLetter('F')">F</button>
+<button class="letter " onclick="showLetter('G')">G</button>
+<button class="letter special" onclick="showLetter('Ğ')">Ğ</button>
+<button class="letter " onclick="showLetter('H')">H</button>
+<button class="letter special" onclick="showLetter('X')">X</button>
+<button class="letter special" onclick="showLetter('I')">I</button>
+<button class="letter special" onclick="showLetter('İ')">İ</button>
+<button class="letter " onclick="showLetter('J')">J</button>
+<button class="letter " onclick="showLetter('K')">K</button>
+<button class="letter special" onclick="showLetter('Q')">Q</button>
+<button class="letter " onclick="showLetter('L')">L</button>
+<button class="letter " onclick="showLetter('M')">M</button>
+<button class="letter " onclick="showLetter('N')">N</button>
+<button class="letter special" onclick="showLetter('Ñ')">Ñ</button>
+<button class="letter " onclick="showLetter('O')">O</button>
+<button class="letter " onclick="showLetter('Ö')">Ö</button>
+<button class="letter " onclick="showLetter('P')">P</button>
+<button class="letter " onclick="showLetter('R')">R</button>
+<button class="letter " onclick="showLetter('S')">S</button>
+<button class="letter " onclick="showLetter('Ş')">Ş</button>
+<button class="letter " onclick="showLetter('T')">T</button>
+<button class="letter " onclick="showLetter('U')">U</button>
+<button class="letter special" onclick="showLetter('Ū')">Ū</button>
+<button class="letter special" onclick="showLetter('Ü')">Ü</button>
+<button class="letter " onclick="showLetter('V')">V</button>
+<button class="letter " onclick="showLetter('Y')">Y</button>
+<button class="letter " onclick="showLetter('Z')">Z</button>
+</div>
 <div class="out" id="letterInfo" style="min-height:78px;margin-top:13px">Bir harfe tıklayın.</div>
 </section>
 
@@ -144,7 +179,6 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 <script>
 const alphabet=["A","B","C","Ç","D","E","Ä","F","G","Ğ","H","X","I","İ","J","K","Q","L","M","N","Ñ","O","Ö","P","R","S","Ş","T","U","Ū","Ü","V","Y","Z"];
 const special=new Set(["Ä","Ğ","X","I","İ","Q","Ñ","Ū","Ü"]);
-document.getElementById("alphabet").innerHTML=alphabet.map(x=>`<button class="letter ${special.has(x)?'special':''}" onclick="showLetter('${x}')">${x}</button>`).join("");
 
 const meanings={
 "Ä":"Ortak Türk Alfabesi çerçevesindeki özel ünlü harflerinden biridir; Kazakça 2026 önerisinde Ә/ә harfiyle ilişkilendirilir.",
