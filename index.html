@@ -28,7 +28,7 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 .warn{background:#fff8e9;border:1px solid #efdda9;border-radius:15px;padding:13px;line-height:1.55;margin-top:13px}
 .ok{background:#eef8f4;border:1px solid #cfe8de;border-radius:15px;padding:13px;line-height:1.55;margin-top:13px}
 .full{margin-top:18px}
-.alphabet{display:grid;grid-template-columns:repeat(17,1fr);gap:7px}@media(max-width:900px){.alphabet{grid-template-columns:repeat(9,1fr)}}@media(max-width:500px){.alphabet{grid-template-columns:repeat(6,1fr)}}
+.alphabet{display:grid;grid-template-columns:repeat(auto-fit,minmax(54px,1fr));gap:8px}
 .letter{border:1px solid var(--line);background:#f5f7f6;border-radius:11px;padding:10px 5px;text-align:center;font-weight:900;font-size:17px;cursor:pointer}.letter.special{background:#e5f3ee;color:var(--accent)}
 .tableWrap{overflow:auto}.mapTable{width:100%;border-collapse:collapse;font-size:14px}.mapTable th,.mapTable td{border-bottom:1px solid var(--line);padding:11px 9px;text-align:left;vertical-align:top}.mapTable th{background:#f6f8f7}
 .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:800px){.examples{grid-template-columns:1fr}}
@@ -37,6 +37,8 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 .storyGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:800px){.storyGrid{grid-template-columns:1fr}}
 .storyBox{border:1px solid var(--line);border-radius:17px;padding:16px;background:#fbfbfa}.storyBox h3{margin-top:0}.storyText{white-space:pre-wrap;font-size:16px;line-height:1.75}
 .note{background:#fff8e9;border:1px solid #efdda9;border-radius:15px;padding:13px;margin-top:13px;line-height:1.55}
+.specialLetters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.specialLetter{border:1px solid var(--line);background:#fbfbfa;border-radius:16px;padding:16px}.specialLetter .glyph{font-size:30px;font-weight:900;color:var(--accent);margin-bottom:6px}.specialLetter p{margin:6px 0;line-height:1.55}.alphabetIntro{line-height:1.65;max-width:900px}.letter{min-height:52px}
+.dictionaryControls{max-width:620px}.dictionaryControls .select{margin-top:5px}.dictionaryTable th{white-space:nowrap}.dictionaryTable td{line-height:1.5}.dictionarySources{margin-top:12px;line-height:1.8}.dictionarySources a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -52,7 +54,7 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
   <div class="kicker">Dilde ve Fikirde Birlik</div>
   <h1>Ortak Türk Alfabesi</h1>
   <p class="lead"></p>
-  <div class="heroActions"><a class="btn primary" href="#donustur">Metni Dönüştür</a><a class="btn secondary" href="#alfabe">34 Harfi Gör</a><a class="btn secondary" href="#ornek">Kazakça Örneği Gör</a></div>
+  <div class="heroActions"><a class="btn primary" href="#donustur">Metni Dönüştür</a><a class="btn secondary" href="#alfabe">34 Harfi Gör</a><a class="btn secondary" href="#ornek">Kazakça Örneği Gör</a><a class="btn secondary" href="#sozluk">Sözlüğü Gör</a></div>
   <div class="badges"><span class="badge">34 harfli ortak çerçeve</span><span class="badge">Kazakça</span><span class="badge">Kırgızca</span><span class="badge">Ses–harf ilişkisi</span><span class="badge">Eğitim amaçlı</span></div>
 </section>
 
@@ -89,131 +91,97 @@ textarea{width:100%;min-height:205px;border:1px solid var(--line);border-radius:
 
 <section class="card full" id="ornek">
 <h2>Kazakça Örnek Metin · “Алтын сақа”</h2>
-<p class="small">Aşağıdaki örnek, Kazakça Kiril metnin Ortak Türk Alfabesi çerçevesindeki harf karşılıklarıyla nasıl dönüştürüldüğünü göstermektedir.</p>
+<p class="small">Solda Kazakça Kiril metni, sağda ise metindeki harflerin Ortak Türk Alfabesi çerçevesindeki karşılıkları gösterilir. Bu işlem anlam çevirisi değil, harf aktarımıdır.</p>
 <div class="storyGrid">
   <div class="storyBox">
     <h3>Kazakça · Kiril</h3>
-    <div class="storyText" id="storyOriginal"></div>
+    <div class="storyText" id="storyOriginal" lang="kk-Cyrl"></div>
   </div>
   <div class="storyBox">
     <h3>Ortak Türk Alfabesi çerçevesinde</h3>
-    <div class="storyText" id="storyConverted"></div>
+    <div class="storyText" id="storyConverted" lang="kk-Latn"></div>
   </div>
 </div>
 </section>
 
-<section class="card full">
-<h2>Temel Harfler</h2>
-<div class="tableWrap">
-<table class="mapTable">
-<thead><tr><th>Dil</th><th>Kiril</th><th>Ortak Latin karşılığı</th><th>Not</th></tr></thead>
-<tbody>
-<tr><td><b>Kazakça</b></td><td>ә ғ қ ң ө</td><td>Ä Ğ Q Ñ Ö</td><td>2026'da kabul edilen Kazakça önerisindeki temel karşılıklar.</td></tr>
-<tr><td><b>Kazakça</b></td><td>ұ ү ы і й</td><td>Ū Ü I İ Y</td><td>Harf düzeyindeki temel karşılıklar.</td></tr>
-<tr><td><b>Kazakça</b></td><td>ш ч ж</td><td>Ş Ç J</td><td>Temel karşılıklar.</td></tr>
-<tr><td><b>Kırgızca</b></td><td>ң ө ү ы и й</td><td>Ñ Ö Ü I İ Y</td><td>Kırgızca için kabul edilen öneri çerçevesindeki temel karşılıklar.</td></tr>
-<tr><td><b>Kırgızca</b></td><td>ш ч ж</td><td>Ş Ç J</td><td>Temel karşılıklar.</td></tr>
-<tr><td><b>Kırgızca</b></td><td>х һ</td><td>H</td><td>Yazım/kelime kökenine göre kontrol gerekebilir.</td></tr>
-</tbody></table>
+<section class="card full" id="ozel-harfler">
+<h2>Türkiye Türkçesi Alfabesinde Bulunmayan 5 Özel Harf</h2>
+<p class="small">Bu beş harf, 34 harfli Ortak Türk Alfabesi çerçevesinde farklı Türk dillerindeki sesleri göstermek için yer alır. Harflerin her ülkenin alfabesinde kullanılacağı anlamına gelmez.</p>
+<div class="specialLetters">
+  <article class="specialLetter"><div class="glyph">Ä ä</div><b>Ses değeri: /æ/</b><p>Açık, e ile a arasında duyulan ünlüye yakın bir sesi gösterir.</p></article>
+  <article class="specialLetter"><div class="glyph">Ñ ñ</div><b>Telaffuz: /ŋ/</b><p>Genizden çıkarılan n sesini karşılar; bazı açıklamalarda “ng” sesine benzetilir.</p></article>
+  <article class="specialLetter"><div class="glyph">Ū ū</div><b>Ses değeri: uzun u</b><p>Ortak Türk Alfabesi çerçevesindeki özel ünlüdür; Kazakça önerisinde Ұ/ұ ile ilişkilendirilir.</p></article>
+  <article class="specialLetter"><div class="glyph">Q q</div><b>Ses değeri: /q/</b><p>Dilin arka bölümünden çıkarılan kalın k benzeri sesi gösterir.</p></article>
+  <article class="specialLetter"><div class="glyph">X x</div><b>Ses değeri: /x/</b><p>Boğazın arka bölümünden çıkarılan h/kh benzeri sesi gösterir.</p></article>
 </div>
 </section>
 
 <section class="card full" id="alfabe">
-<h2>Ortak Türk Alfabesi · 34 harf</h2>
-<p class="small">2024'te 34 harften oluşan Latin tabanlı Ortak Türk Alfabesi üzerinde uzlaşıldı. 2026'da Kazakça ve Kırgızca için bu ortak çerçeveye dayalı alfabe önerileri ayrıca referans belge olarak kabul edildi.</p>
-<div class="alphabet" id="alphabet">
-<button class="letter " onclick="showLetter('A')">A</button>
-<button class="letter " onclick="showLetter('B')">B</button>
-<button class="letter " onclick="showLetter('C')">C</button>
-<button class="letter " onclick="showLetter('Ç')">Ç</button>
-<button class="letter " onclick="showLetter('D')">D</button>
-<button class="letter " onclick="showLetter('E')">E</button>
-<button class="letter special" onclick="showLetter('Ä')">Ä</button>
-<button class="letter " onclick="showLetter('F')">F</button>
-<button class="letter " onclick="showLetter('G')">G</button>
-<button class="letter special" onclick="showLetter('Ğ')">Ğ</button>
-<button class="letter " onclick="showLetter('H')">H</button>
-<button class="letter special" onclick="showLetter('X')">X</button>
-<button class="letter special" onclick="showLetter('I')">I</button>
-<button class="letter special" onclick="showLetter('İ')">İ</button>
-<button class="letter " onclick="showLetter('J')">J</button>
-<button class="letter " onclick="showLetter('K')">K</button>
-<button class="letter special" onclick="showLetter('Q')">Q</button>
-<button class="letter " onclick="showLetter('L')">L</button>
-<button class="letter " onclick="showLetter('M')">M</button>
-<button class="letter " onclick="showLetter('N')">N</button>
-<button class="letter special" onclick="showLetter('Ñ')">Ñ</button>
-<button class="letter " onclick="showLetter('O')">O</button>
-<button class="letter " onclick="showLetter('Ö')">Ö</button>
-<button class="letter " onclick="showLetter('P')">P</button>
-<button class="letter " onclick="showLetter('R')">R</button>
-<button class="letter " onclick="showLetter('S')">S</button>
-<button class="letter " onclick="showLetter('Ş')">Ş</button>
-<button class="letter " onclick="showLetter('T')">T</button>
-<button class="letter " onclick="showLetter('U')">U</button>
-<button class="letter special" onclick="showLetter('Ū')">Ū</button>
-<button class="letter special" onclick="showLetter('Ü')">Ü</button>
-<button class="letter " onclick="showLetter('V')">V</button>
-<button class="letter " onclick="showLetter('Y')">Y</button>
-<button class="letter " onclick="showLetter('Z')">Z</button>
-</div>
-<div class="out" id="letterInfo" style="min-height:78px;margin-top:13px">Bir harfe tıklayın.</div>
+<h2>Ortak Türk Alfabesi · 34 Harf</h2>
+<p class="small alphabetIntro">Ortak Türk Alfabesi, 2024 yılında üzerinde uzlaşılan Latin tabanlı 34 harflik bir çerçeve alfabedir. Türkiye Türkçesinin 29 harfini korur; farklı Türk dillerindeki sesleri göstermek üzere Ä, Ñ, Q, X ve Ū harflerini de içerir. Bu, her ülkenin günlük yazımında zorunlu olarak 34 harfin tamamını kullanacağı anlamına gelmez.</p>
+<div class="alphabet" id="alphabet"></div>
+<div class="out" id="letterInfo" style="min-height:78px;margin-top:13px">Bir harfe tıklayın; harfin açıklaması burada görünecek.</div>
 </section>
 
-<section class="card full">
-<h2>Harf ve Ses İlişkisi</h2>
-<p class="small">Sitedeki örnekler, harfleri doğrudan otomatik dönüşüm kuralı olarak değil, Türk dilleri arasındaki ses ve biçim ilişkilerini açıklayan örnekler olarak sunulmaktadır.</p>
-<div class="examples">
-<div class="example"><b>aç- → as-</b>Ses değişimine örnek</div>
-<div class="example"><b>ayt- → eyt-</b>Ses değişimine örnek</div>
-<div class="example"><b>bir- → ber-</b>Tek ses farklılığı</div>
-<div class="example"><b>kil- → kel-</b>Tek ses farklılığı</div>
-<div class="example"><b>boz- → buz-</b>Ses değişimi</div>
-<div class="example"><b>köter- → küter- → kötür-</b>Biçim/ses farklılığı</div>
+<section class="card full" id="sozluk">
+<h2>Kazakça–Türkçe ve Kırgızca–Türkçe Mini Sözlük</h2>
+<p class="small">Sözlükte her dil için 20 temel sözcük yer alır. Kiril yazımı, dönüştürücünün kullandığı Latin tabanlı harf aktarımı ve Türkçe anlamı birlikte gösterilir. Sözcükler başlangıç düzeyinde bir örnek listedir; anlamlar sözlük kaynaklarından kontrol edilebilir.</p>
+<div class="dictionaryControls">
+  <label class="small" for="dictionaryLang">Dil</label>
+  <select class="select" id="dictionaryLang" aria-label="Sözlük dili">
+    <option value="kaz">Kazakça – Türkçe (20 sözcük)</option>
+    <option value="kir">Kırgızca – Türkçe (20 sözcük)</option>
+  </select>
+  <label class="small" for="dictionarySearch" style="display:block;margin-top:10px">Sözcük ara</label>
+  <input class="select" id="dictionarySearch" type="search" placeholder="Kiril, Latin veya Türkçe sözcük ara…" />
 </div>
-
+<div class="tableWrap" style="margin-top:14px">
+<table class="mapTable dictionaryTable">
+<thead><tr><th>Kiril yazımı</th><th>Ortak alfabe çerçevesinde harf aktarımı</th><th>Türkçe anlamı</th></tr></thead>
+<tbody id="dictionaryRows"></tbody>
+</table>
+</div>
+<p class="small" id="dictionaryCount" aria-live="polite"></p>
+<div class="small dictionarySources"><b>Kontrol için sözlük kaynakları:</b>
+<a href="https://www.pauctle.com/kztr/index.php" target="_blank" rel="noopener noreferrer">Pamukkale Üniversitesi Kazakça–Türkçe Sözlük</a> ·
+<a href="https://pauctle.com/kgtr/" target="_blank" rel="noopener noreferrer">Pamukkale Üniversitesi Kırgızca–Türkçe Sözlük</a> ·
+<a href="https://tr.glosbe.com/kk/tr" target="_blank" rel="noopener noreferrer">Glosbe Kazakça–Türkçe</a> ·
+<a href="https://glosbe.com/ky/tr" target="_blank" rel="noopener noreferrer">Glosbe Kırgızca–Türkçe</a>.
+</div>
 </section>
 
 </div>
 
 <script>
-const alphabet=["A","B","C","Ç","D","E","Ä","F","G","Ğ","H","X","I","İ","J","K","Q","L","M","N","Ñ","O","Ö","P","R","S","Ş","T","U","Ū","Ü","V","Y","Z"];
-const special=new Set(["Ä","Ğ","X","I","İ","Q","Ñ","Ū","Ü"]);
-
+const alphabet=["A","Ä","B","C","Ç","D","E","F","G","Ğ","H","X","I","İ","J","K","Q","L","M","N","Ñ","O","Ö","P","R","S","Ş","T","U","Ū","Ü","V","Y","Z"];
+const special=new Set(["Ä","Ñ","Q","X","Ū"]);
 const meanings={
-"Ä":"Ortak Türk Alfabesi çerçevesindeki özel ünlü harflerinden biridir; Kazakça 2026 önerisinde Ә/ә harfiyle ilişkilendirilir.",
-"Ğ":"Ortak Türk Alfabesi'nde yer alan harftir. Kazakça 2026 önerisinde Ғ/ғ harfiyle ilişkilendirilir.",
-"X":"Ortak çerçevede bulunan özel ünsüz harfidir.",
-"I":"Noktasız ı sesini gösterir.",
-"İ":"Noktalı i sesini gösterir.",
-"Q":"Kazakça önerisinde Қ/қ ile ilişkilendirilen harftir.",
-"Ñ":"Kazakça ve Kırgızcada Ң/ң ile ilişkilendirilen harftir.",
-"Ū":"2024 ortak alfabesine Kazak heyetinin önerisiyle eklenen ve Kazakça Ұ/ұ ile ilişkilendirilen harftir.",
-"Ü":"Kazakça/Kırgızcada ön yuvarlak ünlüyü gösteren harftir."
+"Ä":"Açık e / ince a benzeri ünlü. Ortak Türk Alfabesi çerçevesindeki özel ünlülerdendir.",
+"Ñ":"Genizden çıkarılan n sesini gösterir; /ŋ/ sesine karşılık gelir.",
+"Q":"Kalın k benzeri sesi gösterir; Kazakça Қ/қ harfiyle ilişkilendirilir.",
+"X":"Boğazdan çıkarılan h/kh benzeri sesi gösterir.",
+"Ū":"Ortak Türk Alfabesi çerçevesindeki özel ünlüdür; Kazakça Ұ/ұ harfiyle ilişkilendirilir.",
+"Ğ":"Ortak Türk Alfabesi'nde yer alan harftir; Kazakça Ғ/ғ ile ilişkilendirilir.",
+"I":"Noktasız ı harfidir.",
+"İ":"Noktalı i harfidir."
 };
 
 function showLetter(x){
- document.getElementById("letterInfo").innerHTML=`<b style="font-size:23px;color:var(--accent)">${x}</b> &nbsp; ${meanings[x]||"Ortak Türk Alfabesi içindeki temel harflerden biridir."}`;
+ const info=meanings[x]||"Ortak Türk Alfabesi içindeki temel harflerden biridir.";
+ document.getElementById("letterInfo").textContent=x+" — "+info;
 }
 
 let lang="kaz";
 
+// Kazakça ve Kırgızca Kiril harflerini, önerilen Latin tabanlı karşılıklara aktarır.
+// Bazı Kiril harflerinin Ortak Türk Alfabesinde tek harfli karşılığı bulunmadığı için
+// bunlar okunabilir Latin birleşimleriyle gösterilir (ör. Ё → Yo, Ц → Ts).
 const maps={
 kaz:{
-"Ә":"Ä","ә":"ä","Ғ":"Ğ","ғ":"ğ","Қ":"Q","қ":"q","Ң":"Ñ","ң":"ñ","Ө":"Ö","ө":"ö",
-"Ұ":"Ū","ұ":"ū","Ү":"Ü","ү":"ü","Ы":"I","ы":"ı","І":"İ","і":"i","Й":"Y","й":"y",
-"Ш":"Ş","ш":"ş","Ч":"Ç","ч":"ç","Ж":"J","ж":"j","А":"A","а":"a","Б":"B","б":"b",
-"В":"V","в":"v","Г":"G","г":"g","Д":"D","д":"d","Е":"E","е":"e","З":"Z","з":"z",
-"К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","О":"O","о":"o",
-"П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u",
-"Ф":"F","ф":"f","Х":"X","х":"x","Һ":"H","һ":"h"
+"А":"A","а":"a","Ә":"Ä","ә":"ä","Б":"B","б":"b","В":"V","в":"v","Г":"G","г":"g","Ғ":"Ğ","ғ":"ğ","Д":"D","д":"d","Е":"E","е":"e","Ё":"Yo","ё":"yo","Ж":"J","ж":"j","З":"Z","з":"z","И":"İ","и":"i","Й":"Y","й":"y","К":"K","к":"k","Қ":"Q","қ":"q","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","Ң":"Ñ","ң":"ñ","О":"O","о":"o","Ө":"Ö","ө":"ö","П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u","Ұ":"Ū","ұ":"ū","Ү":"Ü","ү":"ü","Ф":"F","ф":"f","Х":"X","х":"x","Һ":"H","һ":"h","Ц":"Ts","ц":"ts","Ч":"Ç","ч":"ç","Ш":"Ş","ш":"ş","Щ":"Şç","щ":"şç","Ъ":"","ъ":"","Ы":"I","ы":"ı","І":"İ","і":"i","Ь":"","ь":"","Э":"E","э":"e","Ю":"Yu","ю":"yu","Я":"Ya","я":"ya"
 },
 kir:{
-"Ң":"Ñ","ң":"ñ","Ө":"Ö","ө":"ö","Ү":"Ü","ү":"ü","Ы":"I","ы":"ı","И":"İ","и":"i","Й":"Y","й":"y",
-"Ш":"Ş","ш":"ş","Ч":"Ç","ч":"ç","Ж":"J","ж":"j","Х":"H","х":"h","Һ":"H","һ":"h",
-"А":"A","а":"a","Б":"B","б":"b","В":"V","в":"v","Г":"G","г":"g","Д":"D","д":"d","Е":"E","е":"e",
-"З":"Z","з":"z","К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","О":"O","о":"o",
-"П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u","Ф":"F","ф":"f"
+"А":"A","а":"a","Б":"B","б":"b","В":"V","в":"v","Г":"G","г":"g","Д":"D","д":"d","Е":"E","е":"e","Ё":"Yo","ё":"yo","Ж":"J","ж":"j","З":"Z","з":"z","И":"İ","и":"i","Й":"Y","й":"y","К":"K","к":"k","Л":"L","л":"l","М":"M","м":"m","Н":"N","н":"n","Ң":"Ñ","ң":"ñ","О":"O","о":"o","Ө":"Ö","ө":"ö","П":"P","п":"p","Р":"R","р":"r","С":"S","с":"s","Т":"T","т":"t","У":"U","у":"u","Ү":"Ü","ү":"ü","Ф":"F","ф":"f","Х":"H","х":"h","Һ":"H","һ":"h","Ц":"Ts","ц":"ts","Ч":"Ç","ч":"ç","Ш":"Ş","ш":"ş","Щ":"Şç","щ":"şç","Ъ":"","ъ":"","Ы":"I","ы":"ı","Ь":"","ь":"","Э":"E","э":"e","Ю":"Yu","ю":"yu","Я":"Ya","я":"ya"
 }};
 
 function transliterate(s){
@@ -223,8 +191,8 @@ function transliterate(s){
 }
 
 function unmappedChars(s){
- const m=maps[lang]; const chars=[...new Set([...s].filter(ch=>/[А-Яа-яЁёҒғҚқҢңӨөҰұҮүЫыІіӘәҺһХхШшЧчЖжИиЙйУу]/u.test(ch)&&!Object.prototype.hasOwnProperty.call(m,ch)))];
- return chars;
+ const m=maps[lang];
+ return [...new Set([...s].filter(ch=>/[\u0400-\u052F]/u.test(ch)&&!Object.prototype.hasOwnProperty.call(m,ch)))];
 }
 
 function convert(){
@@ -233,8 +201,10 @@ function convert(){
  document.getElementById("output").textContent=result;
  const unknown=unmappedChars(src);
  if(unknown.length){
+   document.getElementById("status").style.display="block";
    document.getElementById("status").textContent=(lang==="kaz"?"Kazakça":"Kırgızca")+" → Latin tabanlı ortak çerçeve. Dönüştürülmeden kalan işaretler: "+unknown.join(", ");
  }else{
+   document.getElementById("status").style.display="block";
    document.getElementById("status").textContent=(lang==="kaz"?"Kazakça":"Kırgızca")+" → Latin tabanlı ortak çerçeve";
  }
 }
@@ -243,6 +213,7 @@ function clearAll(){
  document.getElementById("input").value="";
  document.getElementById("output").textContent="";
  document.getElementById("status").textContent="";
+ document.getElementById("status").style.display="none";
 }
 
 const kazakhExample=`Алтын сақа
@@ -279,6 +250,7 @@ document.getElementById("lang").addEventListener("change",e=>{
  document.getElementById("input").value="";
  document.getElementById("output").textContent="Sonuç burada görünecek.";
  document.getElementById("status").textContent="";
+ document.getElementById("status").style.display="none";
 });
 
 document.getElementById("file").addEventListener("change",async e=>{
@@ -289,8 +261,61 @@ document.getElementById("file").addEventListener("change",async e=>{
  }
 });
 
+// Mini sözlük: temel ve yaygın sözcükler; kaynak bağlantıları sayfanın altında verilmiştir.
+const dictionary={
+ kaz:[
+  {word:"адам",meaning:"insan"},{word:"бала",meaning:"çocuk"},{word:"ана",meaning:"anne"},{word:"әке",meaning:"baba"},{word:"үй",meaning:"ev"},
+  {word:"су",meaning:"su"},{word:"жер",meaning:"yer, toprak"},{word:"күн",meaning:"gün, güneş"},{word:"түн",meaning:"gece"},{word:"кітап",meaning:"kitap"},
+  {word:"мектеп",meaning:"okul"},{word:"дос",meaning:"arkadaş"},{word:"жол",meaning:"yol"},{word:"қала",meaning:"şehir"},{word:"ауыл",meaning:"köy"},
+  {word:"ағаш",meaning:"ağaç"},{word:"тау",meaning:"dağ"},{word:"көл",meaning:"göl"},{word:"нан",meaning:"ekmek"},{word:"сүт",meaning:"süt"}
+ ],
+ kir:[
+  {word:"адам",meaning:"insan"},{word:"бала",meaning:"çocuk"},{word:"эне",meaning:"anne"},{word:"ата",meaning:"baba, dede"},{word:"үй",meaning:"ev"},
+  {word:"суу",meaning:"su"},{word:"жер",meaning:"yer, toprak"},{word:"күн",meaning:"gün, güneş"},{word:"түн",meaning:"gece"},{word:"китеп",meaning:"kitap"},
+  {word:"мектеп",meaning:"okul"},{word:"дос",meaning:"arkadaş"},{word:"жол",meaning:"yol"},{word:"шаар",meaning:"şehir"},{word:"айыл",meaning:"köy"},
+  {word:"дарак",meaning:"ağaç"},{word:"тоо",meaning:"dağ"},{word:"көл",meaning:"göl"},{word:"нан",meaning:"ekmek"},{word:"сүт",meaning:"süt"}
+ ]
+};
+function renderDictionary(){
+ const language=document.getElementById("dictionaryLang").value;
+ const query=document.getElementById("dictionarySearch").value.trim().toLocaleLowerCase("tr");
+ const rows=document.getElementById("dictionaryRows");
+ rows.replaceChildren();
+ const items=dictionary[language].map(item=>({...item,latin:transliterateForLanguage(item.word,language)}));
+ const filtered=items.filter(item=>(item.word+" "+item.latin+" "+item.meaning).toLocaleLowerCase("tr").includes(query));
+ filtered.forEach(item=>{
+  const tr=document.createElement("tr");
+  [item.word,item.latin,item.meaning].forEach(value=>{const td=document.createElement("td");td.textContent=value;tr.appendChild(td);});
+  rows.appendChild(tr);
+ });
+ document.getElementById("dictionaryCount").textContent=filtered.length+" / "+items.length+" sözcük gösteriliyor.";
+}
+function transliterateForLanguage(word,language){
+ const previous=lang;
+ lang=language;
+ const result=transliterate(word);
+ lang=previous;
+ return result;
+}
+document.getElementById("dictionaryLang").addEventListener("change",renderDictionary);
+document.getElementById("dictionarySearch").addEventListener("input",renderDictionary);
+
+// Alfabe kartlarını koddan üret: harf sırası ve karakterler tek kaynaktan yönetilir.
+const alphabetContainer=document.getElementById("alphabet");
+alphabet.forEach(letter=>{
+ const button=document.createElement("button");
+ button.type="button";
+ button.className="letter"+(special.has(letter)?" special":"");
+ button.textContent=letter;
+ button.setAttribute("aria-label",letter+" harfi hakkında bilgi");
+ button.addEventListener("click",()=>showLetter(letter));
+ alphabetContainer.appendChild(button);
+});
+
 document.getElementById("storyOriginal").textContent=kazakhExample;
+lang="kaz";
 document.getElementById("storyConverted").textContent=transliterate(kazakhExample);
+renderDictionary();
 </script>
 </body>
 </html>
